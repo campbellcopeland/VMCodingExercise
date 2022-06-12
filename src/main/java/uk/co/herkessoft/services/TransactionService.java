@@ -7,4 +7,5 @@ import java.util.Collection;
 public interface TransactionService {
     Collection<TransactionDto> listTransactions(String category);
 
+    Double getOutgoings(String category);
 }

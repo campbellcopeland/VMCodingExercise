@@ -32,6 +32,16 @@ public class TransactionServiceImpl implements TransactionService{
         return transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(Collections.reverseOrder(new SortByDate())).collect(Collectors.toList());
     }
 
+    @Override
+    public Double getOutgoings(String category) {
+        Collection<TransactionDto> transactionDtos = listTransactions(category);
+        if (transactionDtos.isEmpty()) {
+            return Double.valueOf(-1);
+        } else {
+            return transactionDtos.stream().mapToDouble(TransactionDto::getAmount).sum();
+        }
+    }
+
 
     private Collection<Transaction> buildTransactions() {
         Collection<Transaction> transaction = new ArrayList<>();

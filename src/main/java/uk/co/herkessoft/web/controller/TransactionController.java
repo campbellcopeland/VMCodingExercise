@@ -31,17 +31,16 @@ public class TransactionController {
             return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
         }
     }
-/*
-    @GetMapping("outgoings/{category}")
-    public ResponseEntity<Collection<TransactionDto>> getTransactionsByCategory(@PathVariable("category") String category){
 
-        Collection<TransactionDto> transactionDtos = transactionService.listTransactions(category);
-        if (transactionDtos.isEmpty()) {
+    @GetMapping("outgoings/{category}")
+    public ResponseEntity<Double> getOutgoingsByCategory(@PathVariable("category") String category){
+
+        Double outgoingsTotal = transactionService.getOutgoings(category);
+        if (-1 == outgoingsTotal) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
+            return new ResponseEntity<>(outgoingsTotal, HttpStatus.OK);
         }
     }
 
- */
 }
