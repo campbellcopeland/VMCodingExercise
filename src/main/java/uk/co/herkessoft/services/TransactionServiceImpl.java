@@ -9,7 +9,10 @@ import uk.co.herkessoft.web.model.TransactionDto;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -26,10 +29,9 @@ public class TransactionServiceImpl implements TransactionService{
         Collection<Transaction> transactions = buildTransactions();
         transactions.removeIf(t -> !t.getCategory().equalsIgnoreCase(category));
 
-        List<TransactionDto> transactionDtos = transactions.stream().map(transactionMapper::transactionToTransactionDto).collect(Collectors.toList());
-        Collections.sort(transactionDtos, Collections.reverseOrder(new SortByDate()));
-        return transactionDtos;
+        return transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(Collections.reverseOrder(new SortByDate())).collect(Collectors.toList());
     }
+
 
     private Collection<Transaction> buildTransactions() {
         Collection<Transaction> transaction = new ArrayList<>();
