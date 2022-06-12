@@ -2,7 +2,6 @@ package uk.co.herkessoft.domain;
 
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -17,6 +16,6 @@ public class Transaction {
     public LocalDate transactionDate;
     public String vendor;
     public TransactionTypeEnum type;
-    public BigDecimal amount;
+    public Double amount;
     public String category;
 }

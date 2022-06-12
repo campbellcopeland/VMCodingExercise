@@ -5,7 +5,6 @@ import uk.co.herkessoft.domain.TransactionTypeEnum;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
@@ -25,7 +24,7 @@ public class TransactionDto {
     public TransactionTypeEnum type;
 
     @NotNull
-    public BigDecimal amount;
+    public Double amount;
 
     @NotBlank
     public String category;

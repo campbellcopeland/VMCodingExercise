@@ -31,4 +31,17 @@ public class TransactionController {
             return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
         }
     }
+/*
+    @GetMapping("outgoings/{category}")
+    public ResponseEntity<Collection<TransactionDto>> getTransactionsByCategory(@PathVariable("category") String category){
+
+        Collection<TransactionDto> transactionDtos = transactionService.listTransactions(category);
+        if (transactionDtos.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
+        }
+    }
+
+ */
 }

@@ -7,7 +7,6 @@ import uk.co.herkessoft.domain.TransactionTypeEnum;
 import uk.co.herkessoft.web.mappers.TransactionMapper;
 import uk.co.herkessoft.web.model.TransactionDto;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -38,7 +37,7 @@ public class TransactionServiceImpl implements TransactionService{
                 .transactionDate(LocalDate.parse("01/Nov/2020", formatter))
                 .vendor("Morrisons")
                 .type(TransactionTypeEnum.CARD)
-                .amount(new BigDecimal(10.40))
+                .amount(Double.valueOf("10.40"))
                 .category("Groceries")
                 .build());
 
@@ -46,7 +45,7 @@ public class TransactionServiceImpl implements TransactionService{
                 .transactionDate(LocalDate.parse("28/Oct/2020", formatter))
                 .vendor("CYBG")
                 .type(TransactionTypeEnum.DIRECT_DEBIT)
-                .amount(new BigDecimal(600))
+                .amount(Double.valueOf("600"))
                 .category("MyMonthlyDD")
                 .build());
 
@@ -54,7 +53,7 @@ public class TransactionServiceImpl implements TransactionService{
                 .transactionDate(LocalDate.parse("28/Oct/2020", formatter))
                 .vendor("PureGym")
                 .type(TransactionTypeEnum.DIRECT_DEBIT)
-                .amount(new BigDecimal(40))
+                .amount(Double.valueOf("40"))
                 .category("MyMonthlyDD")
                 .build());
 
@@ -62,7 +61,7 @@ public class TransactionServiceImpl implements TransactionService{
                 .transactionDate(LocalDate.parse("01/Oct/2020", formatter))
                 .vendor("M&S")
                 .type(TransactionTypeEnum.CARD)
-                .amount(new BigDecimal(5.99))
+                .amount(Double.valueOf("5.99"))
                 .category("Groceries")
                 .build());
 
@@ -70,7 +69,7 @@ public class TransactionServiceImpl implements TransactionService{
                 .transactionDate(LocalDate.parse("30/Sept/2020", formatter))
                 .vendor("McMillan")
                 .type(TransactionTypeEnum.INTERNET)
-                .amount(new BigDecimal(10))
+                .amount(Double.valueOf("10"))
                 .category("")
                 .build());
 
