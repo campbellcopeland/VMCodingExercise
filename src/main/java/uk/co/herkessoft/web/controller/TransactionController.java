@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import uk.co.herkessoft.services.TransactionService;
+import uk.co.herkessoft.web.model.OutgoingDto;
 import uk.co.herkessoft.web.model.TransactionDto;
 
 import java.util.Collection;
@@ -40,6 +41,17 @@ public class TransactionController {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(outgoingsTotal, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("outgoings")
+    public ResponseEntity<Collection<OutgoingDto>> getOutgoings(){
+
+        Collection<OutgoingDto> outgoingDtos = transactionService.getOutgoings();
+        if (outgoingDtos.isEmpty()) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(outgoingDtos, HttpStatus.OK);
         }
     }
 

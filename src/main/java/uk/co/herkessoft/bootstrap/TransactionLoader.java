@@ -20,7 +20,7 @@ public class TransactionLoader implements CommandLineRunner {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy");
     
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         
         if(transactionRepository.count() == 0 ) {
             loadTransactionObjects();

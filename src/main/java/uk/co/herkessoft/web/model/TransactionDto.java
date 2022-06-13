@@ -26,6 +26,5 @@ public class TransactionDto {
     @NotNull
     public Double amount;
 
-    @NotBlank
     public String category;
 }

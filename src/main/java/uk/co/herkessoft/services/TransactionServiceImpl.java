@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 import uk.co.herkessoft.domain.Transaction;
 import uk.co.herkessoft.repositories.TransactionRepository;
 import uk.co.herkessoft.web.mappers.TransactionMapper;
+import uk.co.herkessoft.web.model.OutgoingDto;
 import uk.co.herkessoft.web.model.TransactionDto;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,13 +19,24 @@ public class TransactionServiceImpl implements TransactionService{
 
     private final TransactionMapper transactionMapper;
     private final TransactionRepository transactionRepository;
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy");
 
     @Override
     public Collection<TransactionDto> listTransactions(String category) {
 
         Collection<Transaction> transactions = transactionRepository.findByCategory(category);
         return transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(Collections.reverseOrder(new SortByDate())).collect(Collectors.toList());
+    }
+
+    @Override
+    public Collection<OutgoingDto> getOutgoings() {
+
+        Collection<String> categories = transactionRepository.getCategoryList();
+        Collection<OutgoingDto> outgoingDtos = categories.stream().map(category -> OutgoingDto.builder()
+                .category(category)
+                .totalAmount(getOutgoings(category))
+                .build()).collect(Collectors.toList());
+
+        return outgoingDtos;
     }
 
     @Override

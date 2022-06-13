@@ -12,4 +12,6 @@ public interface TransactionRepository {
     int count();
 
     void saveAll(Collection<Transaction> transactions);
+
+    Collection<String> getCategoryList();
 }
