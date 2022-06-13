@@ -28,7 +28,7 @@ public class TransactionController {
 
         Collection<TransactionDto> transactionDtos = transactionService.listTransactions(category);
         if (transactionDtos.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(transactionDtos, HttpStatus.OK);
         }
@@ -39,7 +39,7 @@ public class TransactionController {
 
         OutgoingDto outgoingDto = transactionService.getTotalOutgoings(category);
         if (null == outgoingDto) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(outgoingDto, HttpStatus.OK);
         }
@@ -50,7 +50,7 @@ public class TransactionController {
 
         Collection<OutgoingDto> outgoingDtos = transactionService.getTotalOutgoings();
         if (outgoingDtos.isEmpty()) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(outgoingDtos, HttpStatus.OK);
         }
@@ -61,7 +61,7 @@ public class TransactionController {
 
         OutgoingDto outgoingDto = transactionService.getAverageOutgoings(category, year);
         if (null == outgoingDto) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(outgoingDto, HttpStatus.OK);
         }
@@ -72,7 +72,7 @@ public class TransactionController {
 
         TransactionDto transactionDto = transactionService.getHighestOutgoings(category, year);
         if (null == transactionDto) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(transactionDto, HttpStatus.OK);
         }
@@ -83,7 +83,7 @@ public class TransactionController {
 
         TransactionDto transactionDto = transactionService.getLowestOutgoings(category, year);
         if (null == transactionDto) {
-            return new ResponseEntity(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } else {
             return new ResponseEntity<>(transactionDto, HttpStatus.OK);
         }
