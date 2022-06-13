@@ -45,7 +45,23 @@
 							"name": "MyMonthlyDD",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/mymonthlydd",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"mymonthlydd"
+									]
+								}
 							},
 							"response": []
 						},
@@ -53,7 +69,23 @@
 							"name": "Groceries",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/groceries",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"groceries"
+									]
+								}
 							},
 							"response": []
 						},
@@ -61,7 +93,23 @@
 							"name": "Unknown",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/unknown",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"unknown"
+									]
+								}
 							},
 							"response": []
 						}
@@ -74,7 +122,22 @@
 							"name": "AllOutgoings",
 							"request": {
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings"
+									]
+								}
 							},
 							"response": []
 						}
