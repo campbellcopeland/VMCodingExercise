@@ -1,6 +1,7 @@
 package uk.co.herkessoft.services;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import uk.co.herkessoft.domain.Transaction;
 import uk.co.herkessoft.repositories.TransactionRepository;
@@ -15,6 +16,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class TransactionServiceImpl implements TransactionService{
@@ -26,6 +28,7 @@ public class TransactionServiceImpl implements TransactionService{
     public Collection<TransactionDto> listTransactions(String category) {
 
         Collection<Transaction> transactions = transactionRepository.findByCategory(category);
+        log.debug("Transaction count for '{}' : {}",  category, transactions.size());
         return transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(Collections.reverseOrder(new SortByDate())).collect(Collectors.toList());
     }
 
@@ -33,14 +36,14 @@ public class TransactionServiceImpl implements TransactionService{
     public Collection<OutgoingDto> getTotalOutgoings() {
 
         Collection<String> categories = transactionRepository.getCategoryList();
-        Collection<OutgoingDto> outgoingDtos = categories.stream().map(category -> getTotalOutgoings(category)).collect(Collectors.toList());
-
-        return outgoingDtos;
+        log.debug("Category count {} : {}",  categories.size(), categories);
+        return categories.stream().map(this::getTotalOutgoings).collect(Collectors.toList());
     }
 
     @Override
     public OutgoingDto getTotalOutgoings(String category) {
         Collection<Transaction> transactions = transactionRepository.findByCategory(category);
+        log.debug("Transaction count for '{}' : {}",  category, transactions.size());
         if (transactions.isEmpty()) {
             return null;
         } else {
@@ -54,6 +57,7 @@ public class TransactionServiceImpl implements TransactionService{
     @Override
     public TransactionDto getHighestOutgoings(String category, Year year) {
         Collection<Transaction> transactions = transactionRepository.findByCategoryAndYear(category, year);
+        log.debug("Transaction count for '{}' in '{}' : {}",  category, year, transactions.size());
         List<TransactionDto> transactionDtos = transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(Collections.reverseOrder(new SortByAmount())).collect(Collectors.toList());
         if (transactionDtos.isEmpty()) {
             return null;
@@ -65,6 +69,7 @@ public class TransactionServiceImpl implements TransactionService{
     @Override
     public TransactionDto getLowestOutgoings(String category, Year year) {
         Collection<Transaction> transactions = transactionRepository.findByCategoryAndYear(category, year);
+        log.debug("Transaction count for '{}' in '{}' : {}",  category, year, transactions.size());
         List<TransactionDto> transactionDtos = transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(new SortByAmount()).collect(Collectors.toList());
         if (transactionDtos.isEmpty()) {
             return null;
@@ -76,6 +81,7 @@ public class TransactionServiceImpl implements TransactionService{
     @Override
     public OutgoingDto getAverageOutgoings(String category, Year year) {
         Collection<Transaction> transactions = transactionRepository.findByCategoryAndYear(category, year);
+        log.debug("Transaction count for '{}' in '{}' : {}",  category, year, transactions.size());
         return OutgoingDto.builder()
                 .category(category)
                 .amount(transactions.stream().mapToDouble(Transaction::getAmount).sum() / 12)
