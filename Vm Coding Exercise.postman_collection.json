@@ -37,7 +37,12 @@
 							"response": []
 						}
 					]
-				},
+				}
+			]
+		},
+		{
+			"name": "Outgoings",
+			"item": [
 				{
 					"name": "GetOutgoingsForCategory",
 					"item": [
@@ -136,6 +141,150 @@
 										"api",
 										"v1",
 										"outgoings"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetHighestSpendForCategoryYear",
+					"item": [
+						{
+							"name": "MyMonthlyDD_2001",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Groceries_2001",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/groceries/highest/2020",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"groceries",
+										"highest",
+										"2020"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unknown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/unknown",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"unknown"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "GetLowestSpendForCategoryYear",
+					"item": [
+						{
+							"name": "MyMonthlyDD_2001",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/mymonthlydd/lowest/2020",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"mymonthlydd",
+										"lowest",
+										"2020"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Groceries_2001",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/groceries/highest/2020",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"groceries",
+										"highest",
+										"2020"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Unknown",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/unknown",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"unknown"
 									]
 								}
 							},

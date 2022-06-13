@@ -8,7 +8,11 @@ import java.util.Collection;
 public interface TransactionService {
     Collection<TransactionDto> listTransactions(String category);
 
-    Collection<OutgoingDto> getOutgoings();
+    Collection<OutgoingDto> getTotalOutgoings();
 
-    Double getOutgoings(String category);
+    Double getTotalOutgoings(String category);
+
+    TransactionDto getHighestOutgoings(String category, Integer year);
+
+    TransactionDto getLowestOutgoings(String category, Integer year);
 }

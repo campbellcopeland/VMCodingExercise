@@ -26,6 +26,13 @@ public class TransactionRepositoryImpl implements TransactionRepository{
     }
 
     @Override
+    public Collection<Transaction> findByCategoryAndYear(String category, Integer year) {
+        Collection<Transaction> results = findByCategory(category);
+        results.removeIf(t -> t.getTransactionDate().getYear() != year.intValue());
+        return results;
+    }
+
+    @Override
     public int count() {
 
         return this.transactions.size();
