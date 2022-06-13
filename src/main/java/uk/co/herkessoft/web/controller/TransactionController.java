@@ -12,6 +12,7 @@ import uk.co.herkessoft.services.TransactionService;
 import uk.co.herkessoft.web.model.OutgoingDto;
 import uk.co.herkessoft.web.model.TransactionDto;
 
+import java.time.Year;
 import java.util.Collection;
 
 @Slf4j
@@ -34,13 +35,13 @@ public class TransactionController {
     }
 
     @GetMapping("outgoings/{category}")
-    public ResponseEntity<Double> getOutgoingsByCategory(@PathVariable("category") String category){
+    public ResponseEntity<OutgoingDto> getOutgoingsByCategory(@PathVariable("category") String category){
 
-        Double outgoingsTotal = transactionService.getTotalOutgoings(category);
-        if (-1 == outgoingsTotal) {
+        OutgoingDto outgoingDto = transactionService.getTotalOutgoings(category);
+        if (null == outgoingDto) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         } else {
-            return new ResponseEntity<>(outgoingsTotal, HttpStatus.OK);
+            return new ResponseEntity<>(outgoingDto, HttpStatus.OK);
         }
     }
 
@@ -55,8 +56,19 @@ public class TransactionController {
         }
     }
 
+    @GetMapping("outgoings/{category}/average/{year}")
+    public ResponseEntity<OutgoingDto> getAverageOutgoingByCategory(@PathVariable("category") String category, @PathVariable("year") Year year) {
+
+        OutgoingDto outgoingDto = transactionService.getAverageOutgoings(category, year);
+        if (null == outgoingDto) {
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(outgoingDto, HttpStatus.OK);
+        }
+    }
+
     @GetMapping("outgoings/{category}/highest/{year}")
-    public ResponseEntity<TransactionDto> getHighestOutgoingsByCategory(@PathVariable("category") String category, @PathVariable("year") Integer year){
+    public ResponseEntity<TransactionDto> getHighestOutgoingsByCategory(@PathVariable("category") String category, @PathVariable("year") Year year){
 
         TransactionDto transactionDto = transactionService.getHighestOutgoings(category, year);
         if (null == transactionDto) {
@@ -67,7 +79,7 @@ public class TransactionController {
     }
 
     @GetMapping("outgoings/{category}/lowest/{year}")
-    public ResponseEntity<TransactionDto> getHLowestOutgoingsByCategory(@PathVariable("category") String category, @PathVariable("year") Integer year){
+    public ResponseEntity<TransactionDto> getHLowestOutgoingsByCategory(@PathVariable("category") String category, @PathVariable("year") Year year){
 
         TransactionDto transactionDto = transactionService.getLowestOutgoings(category, year);
         if (null == transactionDto) {

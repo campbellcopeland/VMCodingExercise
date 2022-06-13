@@ -16,5 +16,5 @@ public class OutgoingDto {
     public String category;
 
     @NotNull
-    public Double totalAmount;
+    public Double amount;
 }

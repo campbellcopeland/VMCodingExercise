@@ -8,6 +8,7 @@ import uk.co.herkessoft.web.mappers.TransactionMapper;
 import uk.co.herkessoft.web.model.OutgoingDto;
 import uk.co.herkessoft.web.model.TransactionDto;
 
+import java.time.Year;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
@@ -32,26 +33,26 @@ public class TransactionServiceImpl implements TransactionService{
     public Collection<OutgoingDto> getTotalOutgoings() {
 
         Collection<String> categories = transactionRepository.getCategoryList();
-        Collection<OutgoingDto> outgoingDtos = categories.stream().map(category -> OutgoingDto.builder()
-                .category(category)
-                .totalAmount(getTotalOutgoings(category))
-                .build()).collect(Collectors.toList());
+        Collection<OutgoingDto> outgoingDtos = categories.stream().map(category -> getTotalOutgoings(category)).collect(Collectors.toList());
 
         return outgoingDtos;
     }
 
     @Override
-    public Double getTotalOutgoings(String category) {
+    public OutgoingDto getTotalOutgoings(String category) {
         Collection<Transaction> transactions = transactionRepository.findByCategory(category);
         if (transactions.isEmpty()) {
-            return Double.valueOf(-1);
+            return null;
         } else {
-            return transactions.stream().mapToDouble(Transaction::getAmount).sum();
+            return OutgoingDto.builder()
+                    .category(category)
+                    .amount(transactions.stream().mapToDouble(Transaction::getAmount).sum())
+                    .build();
         }
     }
 
     @Override
-    public TransactionDto getHighestOutgoings(String category, Integer year) {
+    public TransactionDto getHighestOutgoings(String category, Year year) {
         Collection<Transaction> transactions = transactionRepository.findByCategoryAndYear(category, year);
         List<TransactionDto> transactionDtos = transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(Collections.reverseOrder(new SortByAmount())).collect(Collectors.toList());
         if (transactionDtos.isEmpty()) {
@@ -62,7 +63,7 @@ public class TransactionServiceImpl implements TransactionService{
     }
 
     @Override
-    public TransactionDto getLowestOutgoings(String category, Integer year) {
+    public TransactionDto getLowestOutgoings(String category, Year year) {
         Collection<Transaction> transactions = transactionRepository.findByCategoryAndYear(category, year);
         List<TransactionDto> transactionDtos = transactions.stream().map(transactionMapper::transactionToTransactionDto).sorted(new SortByAmount()).collect(Collectors.toList());
         if (transactionDtos.isEmpty()) {
@@ -72,7 +73,14 @@ public class TransactionServiceImpl implements TransactionService{
         }
     }
 
-
+    @Override
+    public OutgoingDto getAverageOutgoings(String category, Year year) {
+        Collection<Transaction> transactions = transactionRepository.findByCategoryAndYear(category, year);
+        return OutgoingDto.builder()
+                .category(category)
+                .amount(transactions.stream().mapToDouble(Transaction::getAmount).sum() / 12)
+                .build();
+    }
 }
 
 class SortByDate implements Comparator<TransactionDto>

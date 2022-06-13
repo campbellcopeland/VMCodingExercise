@@ -3,6 +3,7 @@ package uk.co.herkessoft.services;
 import uk.co.herkessoft.web.model.OutgoingDto;
 import uk.co.herkessoft.web.model.TransactionDto;
 
+import java.time.Year;
 import java.util.Collection;
 
 public interface TransactionService {
@@ -10,9 +11,11 @@ public interface TransactionService {
 
     Collection<OutgoingDto> getTotalOutgoings();
 
-    Double getTotalOutgoings(String category);
+    OutgoingDto getTotalOutgoings(String category);
 
-    TransactionDto getHighestOutgoings(String category, Integer year);
+    TransactionDto getHighestOutgoings(String category, Year year);
 
-    TransactionDto getLowestOutgoings(String category, Integer year);
+    TransactionDto getLowestOutgoings(String category, Year year);
+
+    OutgoingDto getAverageOutgoings(String category, Year year);
 }

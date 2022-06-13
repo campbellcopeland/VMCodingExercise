@@ -69,6 +69,94 @@ public class TransactionLoader implements CommandLineRunner {
                 .category("")
                 .build());
 
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Jan/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Feb/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Mar/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Apr/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/May/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Jun/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Jul/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Aug/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Sept/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Nov/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("28/Dec/2020", formatter))
+                .vendor("PureGym")
+                .type(TransactionTypeEnum.DIRECT_DEBIT)
+                .amount(Double.valueOf("40"))
+                .category("MyMonthlyDD")
+                .build());
+
         transactionRepository.saveAll(transactions);
 
     }

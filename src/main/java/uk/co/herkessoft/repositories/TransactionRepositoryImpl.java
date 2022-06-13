@@ -3,6 +3,7 @@ package uk.co.herkessoft.repositories;
 import org.springframework.stereotype.Component;
 import uk.co.herkessoft.domain.Transaction;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -26,9 +27,9 @@ public class TransactionRepositoryImpl implements TransactionRepository{
     }
 
     @Override
-    public Collection<Transaction> findByCategoryAndYear(String category, Integer year) {
+    public Collection<Transaction> findByCategoryAndYear(String category, Year year) {
         Collection<Transaction> results = findByCategory(category);
-        results.removeIf(t -> t.getTransactionDate().getYear() != year.intValue());
+        results.removeIf(t -> t.getTransactionDate().getYear() != year.getValue());
         return results;
     }
 
