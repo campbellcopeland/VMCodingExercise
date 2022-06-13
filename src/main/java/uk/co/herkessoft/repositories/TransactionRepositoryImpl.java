@@ -20,8 +20,7 @@ public class TransactionRepositoryImpl implements TransactionRepository{
     @Override
     public Collection<Transaction> findByCategory(String category) {
 
-        Collection<Transaction> results = new ArrayList<>();
-        results.addAll(this.transactions);
+        Collection<Transaction> results = new ArrayList<>(this.transactions);
         results.removeIf(t -> !t.getCategory().equalsIgnoreCase(category));
         return results;
     }
@@ -48,8 +47,8 @@ public class TransactionRepositoryImpl implements TransactionRepository{
     @Override
     public Collection<String> getCategoryList() {
 
-        Predicate<Transaction> predicate = distinctByKey(p -> p.getCategory());
-        return transactions.stream().filter(predicate::test).map(Transaction::getCategory).collect(Collectors.toList());
+        Predicate<Transaction> predicate = distinctByKey(Transaction::getCategory);
+        return transactions.stream().filter(predicate).map(Transaction::getCategory).collect(Collectors.toList());
     }
 
     public static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
