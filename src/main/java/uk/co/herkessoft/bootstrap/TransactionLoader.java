@@ -65,8 +65,24 @@ public class TransactionLoader implements CommandLineRunner {
                 .transactionDate(LocalDate.parse("30/Sept/2020", formatter))
                 .vendor("McMillan")
                 .type(TransactionTypeEnum.INTERNET)
-                .amount(Double.valueOf("10"))
-                .category("")
+                .amount(Double.valueOf("10.99"))
+                .category("Shopping")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("30/Sept/2021", formatter))
+                .vendor("McMillan")
+                .type(TransactionTypeEnum.INTERNET)
+                .amount(Double.valueOf("11.77"))
+                .category("Shopping")
+                .build());
+
+        transactions.add(Transaction.builder()
+                .transactionDate(LocalDate.parse("30/Sept/2019", formatter))
+                .vendor("McMillan")
+                .type(TransactionTypeEnum.INTERNET)
+                .amount(Double.valueOf("9.88"))
+                .category("Shopping")
                 .build());
 
         transactions.add(Transaction.builder()

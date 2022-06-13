@@ -29,6 +29,30 @@
 							"response": []
 						},
 						{
+							"name": "Shopping",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/transactions/shopping",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"shopping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Unknown",
 							"request": {
 								"method": "GET",
@@ -95,6 +119,30 @@
 							"response": []
 						},
 						{
+							"name": "Shopping",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/shopping",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"shopping"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Unknown",
 							"request": {
 								"method": "GET",
@@ -152,7 +200,7 @@
 					"name": "GetHighestSpendForCategoryYear",
 					"item": [
 						{
-							"name": "MyMonthlyDD_2001",
+							"name": "MyMonthlyDD_2020",
 							"request": {
 								"method": "GET",
 								"header": []
@@ -160,7 +208,7 @@
 							"response": []
 						},
 						{
-							"name": "Groceries_2001",
+							"name": "Groceries_2020",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -180,6 +228,84 @@
 										"groceries",
 										"highest",
 										"2020"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shopping_2019",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/shopping/highest/2019",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"shopping",
+										"highest",
+										"2019"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shopping_2020",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/shopping/highest/2020",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"shopping",
+										"highest",
+										"2020"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Shopping_2021",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:8080/api/v1/outgoings/shopping/highest/2021",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"outgoings",
+										"shopping",
+										"highest",
+										"2021"
 									]
 								}
 							},
@@ -215,7 +341,7 @@
 					"name": "GetLowestSpendForCategoryYear",
 					"item": [
 						{
-							"name": "MyMonthlyDD_2001",
+							"name": "MyMonthlyDD_2020",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -241,7 +367,7 @@
 							"response": []
 						},
 						{
-							"name": "Groceries_2001",
+							"name": "Groceries_2020",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -296,7 +422,7 @@
 					"name": "GetAverageSpendForCategoryMonth",
 					"item": [
 						{
-							"name": "MyMonthlyDD_2001",
+							"name": "MyMonthlyDD_2020",
 							"request": {
 								"method": "GET",
 								"header": [],
